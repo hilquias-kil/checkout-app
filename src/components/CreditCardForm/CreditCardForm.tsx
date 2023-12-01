@@ -1,24 +1,17 @@
-import Image from "next/image";
+import { CardsFlags } from "../CardsFlags";
 
 export function CreditCardForm() {
   return (
     <form>
+      <CardsFlags />
       <div>
-        <Image src="/master.svg" alt="Mastercard" width={32} height={23} />
-        <Image src="/diners.svg" alt="Diners club" width={32} height={23} />
-        <Image
-          src="/american_express.svg"
-          alt="American express"
-          width={32}
-          height={23}
-        />
-        <Image src="/visa.svg" alt="Visa" width={32} height={23} />
-        <Image src="/elo.svg" alt="Elo" width={32} height={23} />
+        <label htmlFor="card-number">Número do cartão</label>
+        <input type="number" placeholder="0000 0000 0000 0000" />
       </div>
-      <p>
-        Pagamentos por{" "}
-        <Image src="/iugu.svg" alt="Iugu" width={29} height={11} />
-      </p>
+      <div>
+      <label htmlFor="card-expire">Validade</label>
+      <input type="text" placeholder="MM/AA" />
+      </div>
     </form>
   );
 }
