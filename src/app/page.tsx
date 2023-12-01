@@ -1,4 +1,5 @@
 import { CreditCardForm } from "@/components/CreditCardForm";
+import { Plans } from "@/components/Plans";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <p className="mb-8 text-xs px-3 py-1 border-[1px] rounded-xl border-gray-200 inline-block">
           fulano@cicrano.com.br
         </p>
+        <Plans />
       </section>
     </div>
   );
