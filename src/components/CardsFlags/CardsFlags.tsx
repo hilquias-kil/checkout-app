@@ -15,7 +15,7 @@ export function CardsFlags() {
         <Image src="/visa.svg" alt="Visa" width={32} height={23} />
         <Image src="/elo.svg" alt="Elo" width={32} height={23} />
       </div>
-      <p className="flex items-center gap-2 justify-center">
+      <p className="flex items-center gap-2 justify-center mb-7">
         <span className="text-[10px] text-gray-200">Pagamentos por</span>
         <Image src="/iugu.svg" alt="Iugu" width={29} height={11} />
       </p>
