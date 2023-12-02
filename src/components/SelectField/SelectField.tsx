@@ -18,9 +18,11 @@ export function SelectField({ label, id, placeholder, options }: Props) {
       </label>
       <select
         id={id}
+        name={id}
+        defaultValue=""
         className="placeholder:text-[#C9C5D4] bg-white text-[#666173] text-base py-2 border-b-[1px] border-[#F4F3F6] w-full focus:border-gray-300 outline-none"
       >
-        <option value="" disabled selected hidden>
+        <option value="" disabled hidden>
           {placeholder}
         </option>
         {options.map((option) => (

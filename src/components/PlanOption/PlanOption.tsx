@@ -10,6 +10,8 @@ type Props = {
   discountAmmount: number;
   discountPercentage: number;
   installments: number;
+  checked: boolean;
+  onChange: () => void;
 };
 
 export function PlanOption({
@@ -21,6 +23,8 @@ export function PlanOption({
   discountAmmount,
   discountPercentage,
   installments,
+  checked,
+  onChange
 }: Props) {
   return (
     <>
@@ -29,6 +33,8 @@ export function PlanOption({
         type="radio"
         name={name}
         id={id}
+        checked={checked}
+        onChange={onChange}
       />
       <label
         htmlFor={id}

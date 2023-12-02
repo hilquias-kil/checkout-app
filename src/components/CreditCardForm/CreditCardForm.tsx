@@ -1,27 +1,39 @@
-"use client"
+"use client";
 
+import { useFormState, useFormStatus } from "react-dom";
 import { CardsFlags } from "@/components/CardsFlags";
 import { InputField } from "@/components/InputField";
 import { SelectField } from "@/components/SelectField";
+import { useStore } from "@/store/store";
+import { postPayment } from "@/actions/postPayment";
 
 export function CreditCardForm() {
+  const [state, formAction] = useFormState(postPayment, null);
+  const planSelected = useStore((state) => state.planSelected);
+
   return (
-    <form>
+    <form action={formAction}>
+      <input type="hidden" name="offerId" value={planSelected?.id} />
+      <input type="hidden" name="gateway" value={planSelected?.gateway} />
       <CardsFlags />
       <InputField
         label="Número do cartão"
-        id="card-number"
+        id="creditCardNumber"
         placeholder="0000 0000 0000 0000"
       />
       <div className="flex gap-12">
-        <InputField label="Validade" id="card-expire" placeholder="MM/AA" />
-        <InputField label="CVV" id="cvv" placeholder="000" />
+        <InputField
+          label="Validade"
+          id="creditCardExpirationDate"
+          placeholder="MM/AA"
+        />
+        <InputField label="CVV" id="creditCardCVV" placeholder="000" />
       </div>
-      <InputField label="CPF" id="cpf" placeholder="000.000.000-00" />
-      <InputField label="Cupom" id="cupom" placeholder="Insira aqui" />
+      <InputField label="CPF" id="creditCardCPF" placeholder="000.000.000-00" />
+      <InputField label="Cupom" id="couponCode" placeholder="Insira aqui" />
       <SelectField
         label="Número de parcelas"
-        id="instalments"
+        id="installments"
         placeholder="Selecionar"
         options={[]}
       />

@@ -2,13 +2,26 @@
 
 import { PlanOption } from "@/components/PlanOption";
 import { Question } from "../icons/Question";
-import { type Plans} from "./types"
+import { Plan, type Plans} from "./types"
+import { useStore } from "@/store/store";
+import { useEffect } from "react";
 
 type Props = {
   plans: Plans
 }
 
 export function Plans({plans}:Props) {
+  const planSelected = useStore((state) => state.planSelected)
+  const setPlan = useStore((state) => state.setPlan)
+
+  const handleChange = (plan: Plan) => {
+    setPlan(plan)
+  }
+
+  useEffect(()=> {
+    setPlan(plans[0])
+  }, [])
+
   return (
     <>
       <div className="mb-8 flex flex-col gap-4">
@@ -23,6 +36,8 @@ export function Plans({plans}:Props) {
             discountAmmount={plan.discountAmmount}
             discountPercentage={plan.discountPercentage}
             installments={plan.installments}
+            checked={planSelected?.id === plan.id}
+            onChange={() => handleChange(plan)}
           />
         ))}
       </div>
