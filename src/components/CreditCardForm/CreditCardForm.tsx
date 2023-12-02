@@ -1,6 +1,8 @@
-import { CardsFlags } from "../CardsFlags";
-import { InputField } from "../InputField";
-import { SelectField } from "../SelectField";
+"use client"
+
+import { CardsFlags } from "@/components/CardsFlags";
+import { InputField } from "@/components/InputField";
+import { SelectField } from "@/components/SelectField";
 
 export function CreditCardForm() {
   return (

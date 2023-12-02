@@ -13,6 +13,7 @@ export function InputField({ label, id, placeholder }: Props) {
       <input
         type="text"
         id={id}
+        name={id}
         placeholder={placeholder}
         className="placeholder:text-[#C9C5D4] text-[#666173] text-base py-2 border-b-[1px] border-[#F4F3F6] w-full focus:border-gray-300 outline-none"
       />

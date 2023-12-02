@@ -1,7 +1,11 @@
+import { getPlans } from "@/actions/getPlans";
 import { CreditCardForm } from "@/components/CreditCardForm";
 import { Plans } from "@/components/Plans";
 
-export default function Home() {
+export default async function Home() {
+
+  const plans = await getPlans()
+
   return (
     <div className="p-8 lg:w-[870px] lg:px-0 m-auto flex flex-col md:flex-row md:justify-between">
       <section className="mb-8 md:w-[330px]">
@@ -14,7 +18,7 @@ export default function Home() {
         <p className="mb-8 text-xs px-3 py-1 border-[1px] rounded-xl border-gray-200 inline-block">
           fulano@cicrano.com.br
         </p>
-        <Plans />
+        <Plans plans={plans} />
       </section>
     </div>
   );
