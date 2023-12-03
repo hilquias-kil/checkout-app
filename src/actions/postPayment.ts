@@ -1,5 +1,19 @@
-'use server'
- 
+"use server";
+
+import { redirect } from "next/navigation";
+
 export async function postPayment(prevState: any, formData: FormData) {
-  console.log(formData)
+  const response = await fetch(
+    "https://private-0ced4-pebmeddesafiofrontend.apiary-mock.com/subscrizption",
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  redirect("/confirmation")
 }
