@@ -1,3 +1,5 @@
+import { ErrorMessage } from "../ErrorMessage";
+
 export type Option = {
   label: string;
   value: string;
@@ -8,9 +10,10 @@ type Props = {
   id: string;
   placeholder: string;
   options: Option[];
+  error: any;
 };
 
-export function SelectField({ label, id, placeholder, options }: Props) {
+export function SelectField({ label, id, placeholder, options, error }: Props) {
   return (
     <div className="flex flex-col mb-8">
       <label htmlFor={id} className="text-xs text-[#666173]">
@@ -31,6 +34,9 @@ export function SelectField({ label, id, placeholder, options }: Props) {
           </option>
         ))}
       </select>
+      {error((e) => (
+        <ErrorMessage message={e.message} />
+      ))}
     </div>
   );
 }

@@ -8,20 +8,8 @@ import { useStore } from "@/store/store";
 import { postPayment } from "@/actions/postPayment";
 import { generateInstallments } from "@/utils/generateInstallments";
 
-import { z } from "zod";
 import { useZorm } from "react-zorm";
-import { validCPF } from "@/utils/validCPF";
-
-const FormSchema = z.object({
-  creditCardNumber: z.string().length(19),
-  creditCardExpirationDate: z.string().length(5),
-  creditCardCVV: z.string().length(3),
-  creditCardCPF: z
-    .string()
-    .length(14)
-    .refine((cpf) => validCPF(cpf), "CPF invalido"),
-  couponCode: z.string().length(9),
-});
+import { FormSchema } from "./schema";
 
 export function CreditCardForm() {
   const [state, formAction] = useFormState(postPayment, null);
@@ -79,22 +67,22 @@ export function CreditCardForm() {
       />
       <SelectField
         label="Número de parcelas"
-        id="installments"
+        id={zo.fields.installments()}
         placeholder="Selecionar"
         options={generateInstallments(
           planSelected?.installments,
           planSelected?.fullPrice,
           planSelected?.discountAmmount
         )}
+        error={zo.errors.installments}
       />
       <button
         type="submit"
         disabled={disabled}
-        className="text-sm text-white bg-[#191847] hover:bg-blue-950 p-4 rounded-3xl w-full transition-colors"
+        className="text-sm text-white disabled:bg-slate-500 bg-[#191847] hover:bg-blue-950 p-4 rounded-3xl w-full transition-colors"
       >
         Finalizar pagamento
       </button>
-      <pre>Validation status: {JSON.stringify(zo.validation, null, 2)}</pre>
     </form>
   );
 }
