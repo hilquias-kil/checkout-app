@@ -14,6 +14,7 @@ import { FormSchema } from "./schema";
 export function CreditCardForm() {
   const [state, formAction] = useFormState(postPayment, null);
   const planSelected = useStore((state) => state.planSelected);
+  const { pending } = useFormStatus();
 
   const zo = useZorm("creditCard", FormSchema);
   const disabled = zo.validation?.success === false;
@@ -78,10 +79,10 @@ export function CreditCardForm() {
       />
       <button
         type="submit"
-        disabled={disabled}
+        disabled={disabled || pending}
         className="text-sm text-white disabled:bg-slate-500 bg-[#191847] hover:bg-blue-950 p-4 rounded-3xl w-full transition-colors"
       >
-        Finalizar pagamento
+        {pending ? "Enviando..." : "Finalizar pagamento"}
       </button>
     </form>
   );

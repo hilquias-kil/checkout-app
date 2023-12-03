@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 
 export async function postPayment(prevState: any, formData: FormData) {
   const response = await fetch(
-    "https://private-0ced4-pebmeddesafiofrontend.apiary-mock.com/subscrizption",
+    "https://private-0ced4-pebmeddesafiofrontend.apiary-mock.com/subscription",
     {
       method: "POST",
       body: formData,
