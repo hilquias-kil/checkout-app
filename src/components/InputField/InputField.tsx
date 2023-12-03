@@ -1,14 +1,22 @@
-import { InputMask, type Replacement } from '@react-input/mask';
+import { InputMask, type Replacement } from "@react-input/mask";
 
 type Props = {
   label: string;
   id: string;
   placeholder: string;
   mask: string;
-  replacement: string | Replacement | undefined
+  replacement: string | Replacement | undefined;
+  error: any;
 };
 
-export function InputField({ label, id, placeholder, mask, replacement }: Props) {
+export function InputField({
+  label,
+  id,
+  placeholder,
+  mask,
+  replacement,
+  error,
+}: Props) {
   return (
     <div className="flex flex-col mb-8">
       <label htmlFor={id} className="text-xs text-[#666173]">
