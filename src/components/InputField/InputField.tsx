@@ -32,7 +32,7 @@ export function InputField({
         replacement={replacement}
         className="placeholder:text-[#C9C5D4] text-[#666173] text-base py-2 border-b-[1px] border-[#F4F3F6] w-full focus:border-gray-300 outline-none"
       />
-      {error((e) => (
+      {error((e: any) => (
         <ErrorMessage message={e.message} />
       ))}
     </div>

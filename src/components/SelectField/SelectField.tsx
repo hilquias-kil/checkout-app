@@ -34,7 +34,7 @@ export function SelectField({ label, id, placeholder, options, error }: Props) {
           </option>
         ))}
       </select>
-      {error((e) => (
+      {error((e: any) => (
         <ErrorMessage message={e.message} />
       ))}
     </div>
