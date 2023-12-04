@@ -1,5 +1,5 @@
 import { Option } from "@/components/SelectField";
-import { formatCurrency } from "./currencyFormat";
+import { formatCurrency } from "./formatCurrency";
 
 export function generateInstallments(
   installments: number = 0,
