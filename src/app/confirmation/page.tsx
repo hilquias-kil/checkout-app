@@ -1,12 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getSubscription } from "@/actions/getSubscription";
+import { formatCurrency } from "@/utils/currencyFormat";
+import { formatCPF } from "@/utils/formatCPF";
 
 export default async function Confirmation() {
-
-  const subscription = await getSubscription()
-
-  console.log(subscription)
+  const subscription = await getSubscription();
 
   return (
     <div className="p-8 lg:w-[340px] flex flex-col items-center lg:px-0 m-auto">
@@ -25,8 +24,24 @@ export default async function Confirmation() {
         <div className="bg-[#F4F3F6] p-4 flex items-center justify-between rounded-2xl mb-5">
           <Image src="/success.svg" alt="sucesso" width={40} height={40} />
           <div className="text-right">
-            <p className="text-[#191847] text-base mb-2">{subscription.offer.title} <span className="mx-1">|</span> {subscription.offer.description}</p>
-            <p className="text-[#191847] text-sm">{subscription.offer.fullPrice - subscription.offer.discountAmmount} <span className="mx-1">|</span> {subscription.installments}x {(subscription.offer.fullPrice - subscription.offer.discountAmmount) / subscription.installments }</p>
+            <p className="text-[#191847] text-base mb-2">
+              {subscription.offer.title} <span className="mx-1">|</span>{" "}
+              {subscription.offer.description}
+            </p>
+            <p className="text-[#191847] text-sm">
+              {formatCurrency(
+                subscription.offer.fullPrice -
+                  subscription.offer.discountAmmount,
+                "BRL"
+              )}{" "}
+              <span className="mx-1">|</span> {subscription.installments}x{" "}
+              {formatCurrency(
+                (subscription.offer.fullPrice -
+                  subscription.offer.discountAmmount) /
+                  subscription.installments,
+                "BRL"
+              )}
+            </p>
           </div>
         </div>
         <p className="flex justify-between text-sm mb-6 px-5">
@@ -35,7 +50,7 @@ export default async function Confirmation() {
         </p>
         <p className="flex justify-between text-sm px-5 mb-2">
           <span className="text-[#C9C5D4]">CPF</span>
-          <span>{subscription.creditCardCPF}</span>
+          <span>{formatCPF(subscription.creditCardCPF)}</span>
         </p>
       </div>
       <Link href="/" className="text-[#191847] text-xs mb-6 font-bold">
