@@ -1,10 +1,9 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { render, screen, waitFor, cleanup } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { CreditCardForm } from "./CreditCardForm";
 
 import { useFormState, useFormStatus } from "react-dom";
-import { debug } from "vitest-preview";
 
 afterEach(cleanup);
 
@@ -14,17 +13,40 @@ vi.mock("react-dom", () => ({
   useFormStatus: () => ({ pending: false }),
 }));
 
+const user = userEvent.setup({ delay: 15 });
+
 describe("CreditCardForm", () => {
   it("renders correctly", () => {
     render(<CreditCardForm />);
 
     expect(screen.getByText("Finalizar pagamento")).toBeInTheDocument();
-    screen.logTestingPlaygroundURL();
   });
 
-  it("allows user to fill out the form", async () => {
+
+  it('allows user to fill out the form', async () => {
     render(<CreditCardForm />);
 
-    debug();
+    const creditCardNumber = screen.getByLabelText(/número do cartão/i)
+    const creditCardExpirationDate = screen.getByLabelText(/validade/i)
+    const creditCardCVV = screen.getByLabelText(/cvv/i)
+    const creditCardCPF = screen.getByLabelText(/cpf/i)
+    const couponCode = screen.getByLabelText(/cupom/i)
+
+    
+    await user.type(creditCardNumber, '1234567890123456');
+    expect(creditCardNumber).toHaveValue('1234 5678 9012 3456');
+
+    await user.type(creditCardExpirationDate, '1230');
+    expect(creditCardExpirationDate).toHaveValue('12/30');
+
+    await user.type(creditCardCVV, '123');
+    expect(creditCardCVV).toHaveValue('123');
+
+    await user.type(creditCardCPF, '12345678909');
+    expect(creditCardCPF).toHaveValue('123.456.789-09');
+
+    await user.type(couponCode, 'testtest1');
+    expect(couponCode).toHaveValue('testtest1');
   });
+
 });

@@ -1,4 +1,4 @@
-import { InputMask, type Replacement } from "@react-input/mask";
+import InputMask from "react-input-mask";
 import { ErrorMessage } from "../ErrorMessage";
 
 type Props = {
@@ -6,7 +6,6 @@ type Props = {
   id: string;
   placeholder: string;
   mask: string;
-  replacement: string | Replacement | undefined;
   error: any;
 };
 
@@ -15,7 +14,6 @@ export function InputField({
   id,
   placeholder,
   mask,
-  replacement,
   error,
 }: Props) {
   return (
@@ -29,7 +27,7 @@ export function InputField({
         name={id}
         placeholder={placeholder}
         mask={mask}
-        replacement={replacement}
+        maskPlaceholder=" "
         className="placeholder:text-[#C9C5D4] text-[#666173] text-base py-2 border-b-[1px] border-[#F4F3F6] w-full focus:border-gray-300 outline-none"
       />
       {error((e: any) => (

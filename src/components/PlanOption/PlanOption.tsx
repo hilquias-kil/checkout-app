@@ -1,4 +1,4 @@
-import { formatCurrency } from "@/utils/currencyFormat";
+import { formatCurrency } from "@/utils/formatCurrency";
 import { formatPercentage } from "@/utils/formatPercentage";
 
 type Props = {
@@ -38,6 +38,7 @@ export function PlanOption({
       />
       <label
         htmlFor={id}
+        data-testid="plan_label"
         className="block cursor-pointer border-[#191847] border-[1px] p-5 relative rounded-2xl after:content-[''] after:block after:w-3 after:h-3 after:bg-white after:rounded-full after:border-2 after:border-white after:shadow-[0_0_0_2px_#F4F3F6] after:absolute after:right-5 after:top-1/2 after:-translate-y-1/2"
       >
         <span className="text-[#191847] font-bold text-sm">

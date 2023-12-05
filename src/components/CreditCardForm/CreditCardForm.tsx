@@ -28,8 +28,7 @@ export function CreditCardForm() {
         label="Número do cartão"
         id={zo.fields.creditCardNumber()}
         placeholder="0000 0000 0000 0000"
-        mask="____ ____ ____ ____"
-        replacement={{ _: /\d/ }}
+        mask="9999 9999 9999 9999"
         error={zo.errors.creditCardNumber}
       />
       <div className="flex gap-12">
@@ -37,16 +36,14 @@ export function CreditCardForm() {
           label="Validade"
           id={zo.fields.creditCardExpirationDate()}
           placeholder="MM/AA"
-          mask="__/__"
-          replacement={{ _: /\d/ }}
+          mask="99/99"
           error={zo.errors.creditCardExpirationDate}
         />
         <InputField
           label="CVV"
           id={zo.fields.creditCardCVV()}
           placeholder="000"
-          mask="___"
-          replacement={{ _: /\d/ }}
+          mask="999"
           error={zo.errors.creditCardCVV}
         />
       </div>
@@ -54,16 +51,14 @@ export function CreditCardForm() {
         label="CPF"
         id={zo.fields.creditCardCPF()}
         placeholder="000.000.000-00"
-        mask="___.___.___-__"
-        replacement={{ _: /\d/ }}
+        mask="999.999.999-99"
         error={zo.errors.creditCardCPF}
       />
       <InputField
         label="Cupom"
         id={zo.fields.couponCode()}
         placeholder="Insira aqui"
-        mask="_________"
-        replacement={{ _: /./ }}
+        mask="*********"
         error={zo.errors.couponCode}
       />
       <SelectField
