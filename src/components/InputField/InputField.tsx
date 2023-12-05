@@ -7,7 +7,7 @@ type Props = {
   placeholder: string;
   mask: string;
   error: any;
-  inputmode:
+  inputmode?:
     | "numeric"
     | "search"
     | "text"
