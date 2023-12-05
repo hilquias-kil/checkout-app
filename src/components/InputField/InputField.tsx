@@ -7,6 +7,16 @@ type Props = {
   placeholder: string;
   mask: string;
   error: any;
+  inputmode:
+    | "numeric"
+    | "search"
+    | "text"
+    | "email"
+    | "tel"
+    | "url"
+    | "none"
+    | "decimal"
+    | undefined;
 };
 
 export function InputField({
@@ -15,6 +25,7 @@ export function InputField({
   placeholder,
   mask,
   error,
+  inputmode = "numeric",
 }: Props) {
   return (
     <div className="flex flex-col mb-8">
@@ -27,6 +38,7 @@ export function InputField({
         name={id}
         placeholder={placeholder}
         mask={mask}
+        inputMode={inputmode}
         maskPlaceholder=" "
         className="placeholder:text-[#C9C5D4] text-[#666173] text-base py-2 border-b-[1px] border-[#F4F3F6] w-full focus:border-gray-300 outline-none"
       />
