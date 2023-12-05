@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getSubscription } from "@/actions/getSubscription";
-import { formatCurrency } from "@/utils/currencyFormat";
+import { formatCurrency } from "@/utils/formatCurrency";
 import { formatCPF } from "@/utils/formatCPF";
 
 export default async function Confirmation() {
