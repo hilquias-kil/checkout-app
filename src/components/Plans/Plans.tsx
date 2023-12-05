@@ -1,26 +1,27 @@
-"use client"
+"use client";
 
 import { PlanOption } from "@/components/PlanOption";
 import { Question } from "../icons/Question";
-import { Plan, type Plans} from "./types"
+import { Plan, type Plans } from "./types";
 import { useStore } from "@/store/store";
 import { useEffect } from "react";
 
 type Props = {
-  plans: Plans
-}
+  plans: Plans;
+};
 
-export function Plans({plans}:Props) {
-  const planSelected = useStore((state) => state.planSelected)
-  const setPlan = useStore((state) => state.setPlan)
+export function Plans({ plans }: Props) {
+  const planSelected = useStore((state) => state.planSelected);
+  const setPlan = useStore((state) => state.setPlan);
 
   const handleChange = (plan: Plan) => {
-    setPlan(plan)
-  }
+    setPlan(plan);
+  };
 
-  useEffect(()=> {
-    setPlan(plans[0])
-  }, [])
+  useEffect(() => {
+    setPlan(plans[0]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
