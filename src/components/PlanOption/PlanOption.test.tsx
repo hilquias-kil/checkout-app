@@ -30,9 +30,7 @@ describe('PlanOption', () => {
   it('handles onChange event', () => {
     const propsWithChecked = { ...defaultProps, checked: true };
     render(<PlanOption {...propsWithChecked} />);
-
-    screen.logTestingPlaygroundURL()
-
+    
     const inputElement = screen.getByRole('radio');
 
     expect(inputElement).toBeChecked();
